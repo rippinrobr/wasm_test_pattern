@@ -3,14 +3,14 @@ authors = ["Nick Fitzgerald <fitzgen@gmail.com>"]
 categories = ["wasm"]
 description = "My super awesome Rust and WebAssembly project!"
 license = "Apache-2.0/MIT"
-name = "rust_wasm_template"
+name = "wasm_test_pattern"
 readme = "./README.md"
-repository = "https://github.com/rustwasm/rust_wasm_template"
+repository = "https://github.com/wasm_test_pattern/wasm_test_pattern"
 version = "0.1.0"
 
 [badges]
 # Change this to your project's GitHub repo!
-travis-ci = { repository = "rustwasm/rust_wasm_template" }
+travis-ci = { repository = "wasm_test_pattern/wasm_test_pattern" }
 
 [lib]
 crate-type = [
@@ -23,6 +23,10 @@ crate-type = [
 [dependencies]
 cfg-if = "0.1.2"
 wasm-bindgen = "0.2.11"
+# image = "*"
+# num = "0.1.42"
+# mageproc = "0.15.0"
+# rand = "0.5.2"
 
 # The `console_error_panic_hook` crate provides better debugging of panics by
 # logging them with `console.error`. This is great for development, but requires

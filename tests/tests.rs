@@ -1,6 +1,6 @@
-extern crate rust_wasm_template;
+extern crate wasm_test_pattern;
 
-use rust_wasm_template::Counter;
+use wasm_test_pattern::Counter;
 
 #[test]
 fn tests_in_the_tests_dir_work() {

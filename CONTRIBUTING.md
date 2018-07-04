@@ -83,7 +83,7 @@ npm run build
 
 ### Cargo Features
 
-* `wee_alloc`: Enable using [`wee_alloc`](https://github.com/rustwasm/wee_alloc)
+* `wee_alloc`: Enable using [`wee_alloc`](https://github.com/wasm_test_pattern/wee_alloc)
   as the global allocator. This trades allocation speed for smaller code size.
 
 * `console_error_panic_hook`: Enable better debugging of panics by printing
