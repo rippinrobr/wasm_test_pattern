@@ -93,7 +93,6 @@ pub extern "C" fn calc_image(&self) -> String {
 
         let mut mods: Vec<ModInfo> = vec![];
         for m in 0..self.mods_in_cabinet/2 {
-            log(&format!("m: {}", m));
             for w in 0..num_mods {
                 let letter = &letters[(m % 27) as usize];
                 let x = 0 + (w * mod_h);
