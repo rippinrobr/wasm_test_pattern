@@ -4,34 +4,29 @@ import { Stripe } from "./wasm_test_pattern";
 const GRID_COLOR = "#111111";
 
 const s = Stripe.new(32, 32, 20);
+const letterMap = s.get_letter_map();
 const mod_h = s.get_mod_height();
 const mod_w = s.get_mod_width();
 const numModsPerCabinet = s.height()/mod_h;
+const numMods = s.get_num_mods();
 
-console.log("h,w", s.height(), s.width());
 const canvas = document.getElementById("test-pattern-canvas");
 canvas.height = s.height();
 canvas.width = s.width();
 
-console.log(canvas.height, canvas.width);
 const ctx = canvas.getContext('2d');
 
 const drawGrid = () => {
     ctx.beginPath();
     ctx.lineWidth = 1 / window.devicePixelRatio;
     ctx.strokeStyle = GRID_COLOR;
+    ctx.font = "14px sans-serif";
     
-    ctx.moveTo(0, 0);
-    ctx.lineTo(0, canvas.height);
-
-    ctx.moveTo(0, canvas.height);
-    ctx.lineTo(canvas.height, canvas.width);
-
     // Vertical lines
-    for (let x = 0; x < numModsPerCabinet; x++ ) {
+    for (let l = 0; l < numModsPerCabinet; l++ ) {
         for (let i = 0; i <= canvas.width; i++ ) {
-            ctx.moveTo(i * mod_w, (x * mod_w));
-            ctx.lineTo(i * mod_w, mod_w + (x * mod_w));
+            ctx.moveTo(i * mod_w, (l * mod_w));
+            ctx.lineTo(i * mod_w, mod_w + (l * mod_w));
         }
 
         // // Horizontal lines
@@ -40,12 +35,17 @@ const drawGrid = () => {
             ctx.lineTo((mod_h + 1) * canvas.width,  j * (mod_w + 1));
         }
 
-        for (var j = 0; j < s.get_num_mods(); j++) {
+        for (var j = 0; j < numMods; j++) {
             ctx.fillStyle = 'rgba(27,255,0, 50)';
-            ctx.fillRect(j * mod_w, x*mod_h, mod_w, mod_h);
+            ctx.fillRect(j * mod_w, l * mod_h, mod_w, mod_h);
+
+            ctx.fillStyle = GRID_COLOR;
+            var x_adjust =  4;
+            if ( j < 10 ) x_adjust = 6;
+            var alpha = letterMap[l % 27];
+            
+            ctx.fillText( alpha + j , j * mod_w + x_adjust, 20 + (l*mod_h), mod_w);
         }
-
-
     }
 
     ctx.stroke();
